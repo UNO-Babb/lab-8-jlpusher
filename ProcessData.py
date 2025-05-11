@@ -20,8 +20,11 @@ def main():
     first = data[0]
     last = data[1]
     idNum = data[3]
+    major = data[6]
+    year = data[5]
     student_id = makeID(first, last, idNum)
-    output = last + "," + first + "," + student_id + "\n"
+    MajorYear = makeMajorYear(major, year)
+    output = last + "," + first + "," + student_id + "," + MajorYear + "\n"
     outFile.write(output)
     #print(student_id)
 
@@ -37,6 +40,19 @@ def makeID(first, last, idNum):
   id = first[0] + last + idNum[-3:]
   
   return id
+
+def makeMajorYear(major, year):
+  if year == "Freshman":
+    YR = "FR"
+  elif year == "Sophomore":
+    YR = "SO"
+  elif year == "Junior":
+    YR = "JR"
+  elif year == "Senior":
+    YR = "SR"
+  MajorYr = major[0:3] + "-" + YR
+
+  return MajorYr 
 
 if __name__ == '__main__':
   main()
